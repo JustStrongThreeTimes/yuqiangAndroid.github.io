@@ -1,0 +1,37 @@
+
+导入ndk
+
+1. private native  int safePay(String username, String password, float money,
+                                int randomCode, long time);
+2.  static {
+        System.loadLibrary("safepay");
+    }
+3.ndk{
+            moduleName "safepay"
+            abiFilters "armeabi","armeabi-v7a","x86"
+            ldLibs "m","log"
+        }
+
+退出project 后 进入 生成方法
+
+4.#include <jni.h>
+#include <android/log.h>
+#include <string.h>
+#define LOG_TAG "System.out"
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+
+5.JNIEXPORT jint JNICALL
+Java_com_qiang_code22_MainActivity_safePay(JNIEnv *env, jobject instance, jstring username_,
+                                           jstring password_, jfloat money, jint randomCode,
+                                           jlong time) {
+    char*  cusername = Jstring2CStr(env,username_);
+    char*  cpassword = Jstring2CStr(env,password_);
+
+    return  safePay(cusername,cpassword,money,randomCode,time);
+}
+
+
+jintArray array_ 对象
+int size = (*env)->GetArrayLength(env,array_); //获取对象长度
+int* cintarr = (*env)->GetIntArrayElements(env,array_,0);//获取对象数组
