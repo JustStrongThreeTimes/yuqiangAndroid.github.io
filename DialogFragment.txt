@@ -1,0 +1,3 @@
+一般来说我们开发是不会直接使用AlertDialog，等。
+而是使用DialogFragment 在屏幕切换时，AlertDialog等Dialog 会丢掉 对话框
+而DialogFragment 会进行保留

@@ -1,0 +1,40 @@
+ListView
+1. 焦点抢占问题
+将ListView中的Item布局中的子控件focusable属性设置为false
+设置item的根布局的属性android:descendantFocusability="blocksDescendant"
+
+2. list item 复用问题
+2.1 比如checkbox 
+在bean 中 建立一个 boolean 类型的 ischecked 在适配器中
+ final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.cb);
+        checkBox.setChecked(list.get(position).ischecked());
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.get(position).setIschecked(checkBox.isChecked());
+            }
+        });
+因为 list 的setischeck 没有被复用
+2.2
+在adapter 中 建立一个 List<Integer> mPos =new ArrayList<Integer>();
+ checkBox.setChecked(false);
+        if(mPos.contains(position)){
+            checkBox.setChecked(true);
+        }
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBox.isChecked()) {
+                    mPos.add(position);
+                }else{
+                    mPos.remove((Integer) position);
+                }
+            }
+      });
+
+3.当项目中，要改变 （需求需要自定义一个TextView(称为：MyTextView)来替换系统的TextView）
+这时候可以使用LayoutInflaterCompat.setFactory
+可以参考http://blog.csdn.net/lmj623565791/article/details/51503977
+
+4
+ 

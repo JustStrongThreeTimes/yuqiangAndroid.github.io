@@ -1,0 +1,42 @@
+Alpha:渐变透明动画
+Scale：渐变尺寸伸缩
+Translate：转换位置移动
+rotate:画面转移
+
+
+代码加载
+Animation animation2 =new AlphaAnimation(0.1f, 1.0f);
+				animation2.setDuration(3000);
+				imageView1.startAnimation(animation2);
+
+xml文件加载
+	Animation animation =AnimationUtils.loadAnimation(getApplicationContext(), 				R.anim.alpha_anim);
+		imageView1.startAnimation(animation);
+
+
+<alpha
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromAlpha="0.1"
+    android:toAlpha="1.0"
+    android:duration="3000">
+	</alpha> 
+
+
+
+参考android_animation
+设置项目的默认进出效果
+  <style name="MyDialogTopRight">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Anim_scale</item>
+    </style>
+    
+        <style name="Anim_scale" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/scale_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/scale_out</item>
+         <item name="android:activityCloseEnterAnimation">@anim/scale_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/scale_out</item>
+    </style>
+可以参考http://blog.csdn.net/lmj623565791/article/details/22990643
+

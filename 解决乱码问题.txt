@@ -1,0 +1,6 @@
+服务器端：
+String sex1= new String(sex.getBytes("ISO-8859-1"), "UTF8");
+安卓端
+在get 请求提交时
+
+String url1 =usl+"?name="+URLEncoder.encode(name,"utf-8");

@@ -1,0 +1,24 @@
+在Fragment中  不能通过 getIntent来取到值 不然会导致该Fragment与Activity绑定
+达不到我们复用的目的
+
+给Fragment添加newInstance方法，将需要的参数传入，设置到bundle中，然后setArguments(bundle)，最后在onCreate中进行获取；
+setArguments方法必须在fragment创建以后，添加给Activity前完成。千万不要，首先调用了add，然后设置arguments。
+
+ public static ContentFragment newInstance(String argument)  
+    {  
+        Bundle bundle = new Bundle();  
+        bundle.putString(ARGUMENT, argument);  
+        ContentFragment contentFragment = new ContentFragment();  
+        contentFragment.setArguments(bundle);  
+        return contentFragment;  
+    }  
+
+
+FragmentPagerAdapter：对于不再需要的fragment，选择调用detach方法，仅销毁视图，并不会销毁fragment实例
+FragmentStatePagerAdapter：会销毁不再需要的fragment，当当前事务提交以后，会彻底的将fragmeng从当前Activity的FragmentManager中移除，state标明，销毁时，会将其onSaveInstanceState(Bundle outState)中的bundle信息保存下来，当用户切换回来，可以通过该bundle恢复生成新的fragment，也就是说，你可以在onSaveInstanceState(Bundle outState)方法中保存一些数据，在onCreate中进行恢复创建。
+
+Fragment中按钮，弹出一个对话框在对话框中的操作需要返回给触发的Fragment中，Android 官方推荐 : DialogFragment 创建对话框
+
+
+参考
+http://blog.csdn.net/lmj623565791/article/details/42628537

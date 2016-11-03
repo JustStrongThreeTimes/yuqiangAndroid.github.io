@@ -1,0 +1,29 @@
+1.现在values中写入 一个xml 定义属性的 属性 如
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="titleText" format="string" />
+    <attr name="titleTextColor" format="color" />
+    <attr name="titleTextSize" format="dimension" />
+
+    <declare-styleable name="CustomTitleView">
+        <attr name="titleText" />
+        <attr name="titleTextColor" />
+        <attr name="titleTextSize" />
+    </declare-styleable>
+
+</resources>
+
+2.在布局文件中 是用控件 以及自定义 属性
+
+
+
+
+3.构造自己定义的View
+
+
+ TypedArray a = context.getTheme().obtainStyledAttributes(attrs,R.styleable.CustomTitleView,defStyle,0);//获取所有的自定义属性
+
+
+
+参考：http://blog.csdn.net/lmj623565791/article/details/24252901
