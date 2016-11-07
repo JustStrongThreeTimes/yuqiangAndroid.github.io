@@ -1,0 +1,16 @@
+1.ViewPager + PageAdapter
+PageAdapet 实现 destroyItem  instantiateItem 方法duiView进行控制
+
+
+2.继承FragmentActivity
+直接通过按钮点击进行Fragment展示
+
+3.FragmentActivity + FragmentPagerAdapter
+
+
+4.ViewPageIndicator + ViewPager +FragmentAdapter
+
+
+
+http://www.imooc.com/learn/264
+

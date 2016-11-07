@@ -1,0 +1,1 @@
+当设置layout_weight时 一行未对其 则应该加上baselineAligned=false这个属性
