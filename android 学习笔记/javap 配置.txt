@@ -1,3 +1,0 @@
-H:\Java\jdk1.7.0_80\bin\javap.exe
--classpath $ModuleFileDir$/build/intermediates/classes/debug -s -p $FileClass$
-$ModuleFileDir$\src\main\Java
