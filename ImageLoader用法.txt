@@ -1,0 +1,10 @@
+private ImageLoader imageLoader = null;
+private DisplayImageOptions options = null;
+
+imageLoader = ImageLoader.getInstance;
+imageLoader.init(ImageLoaderConfiguration.createDefault(context));
+options = new DisplayImageOptions.Builder()
+                .cacheInMemory(true).cacheOnDisk(true).build();
+
+//Ω¯––º”‘ÿ
+imageLoader.displayImage(url,imageView);

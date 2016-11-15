@@ -1,8 +1,11 @@
 1. XListview
 
+错误：
 Error:(452, 3) 错误: 找不到符号
 符号:   方法 initializeScrollbars(TypedArray)
 位置: 类 PLA_AbsListView
+
+解决方法
 
 public PLA_AbsListView(Context context) {
 		super(context);
@@ -19,4 +22,14 @@ public PLA_AbsListView(Context context) {
 		}
 		a.recycle();
 	}
+
+2. 使用 github 上项目 会报
+Error:(2, 0) Plugin with id 'com.github.dcendents.android-maven' not found.
+
+
+解决办法：
+ 在项目的 build.gradle 中加入
+ classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+
 

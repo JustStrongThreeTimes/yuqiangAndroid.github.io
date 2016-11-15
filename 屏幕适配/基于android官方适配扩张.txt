@@ -1,0 +1,6 @@
+compile 'com.zhy:percent-support-extends:1.1.1'
+
+其余用法与 android 官方一样  
+
+
+http://blog.csdn.net/lmj623565791/article/details/46767825

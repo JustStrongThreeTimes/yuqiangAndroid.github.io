@@ -12,5 +12,5 @@ PageAdapet 实现 destroyItem  instantiateItem 方法duiView进行控制
 
 
 
-http://www.imooc.com/learn/264
+参考http://www.imooc.com/learn/264
 

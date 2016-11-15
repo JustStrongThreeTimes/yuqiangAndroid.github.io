@@ -1,0 +1,83 @@
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"  
+        xmlns:tools="http://schemas.android.com/tools"  
+        tools:context="com.example.actionbartest.MainActivity" >  
+      
+        <item  
+            android:id="@+id/action_compose"  
+            android:icon="@drawable/ic_action_compose"  
+            android:showAsAction="always"  
+            android:title="@string/action_compose"/>  
+        <item  
+            android:id="@+id/action_delete"  
+            android:icon="@drawable/ic_action_delete"  
+            android:showAsAction="always"  
+            android:title="@string/action_delete"/>  
+        <item  
+            android:id="@+id/action_settings"  
+            android:icon="@drawable/ic_launcher"  
+            android:showAsAction="never"  
+            android:title="@string/action_settings"/>  
+      
+    </menu>  
+
+
+    @Override  
+    public boolean onCreateOptionsMenu(Menu menu) {  
+        MenuInflater inflater = getMenuInflater();  
+        inflater.inflate(R.menu.main, menu);  
+        return super.onCreateOptionsMenu(menu);  
+    }  
+
+
+
+1.		actionBar.setDisplayHomeAsUpEnabled(true);  //设置导航功能  有个向右的小箭头 可以做返回按钮
+2.    <activity  
+        android:name="com.example.actionbartest.MainActivity"  
+        android:logo="@drawable/weather"  
+  //添加      android:parentActivityName="com.example.actionbartest.LaunchActivity" >  
+    </activity> 
+3.对android.R.id.home这个事件进行一些特殊处理 
+
+    @Override  
+    public boolean onOptionsItemSelected(MenuItem item) {  
+        switch (item.getItemId()) {  
+        case android.R.id.home:  
+            Intent upIntent = NavUtils.getParentActivityIntent(this);  
+            if (NavUtils.shouldUpRecreateTask(this, upIntent)) {  
+                TaskStackBuilder.create(this)  
+                        .addNextIntentWithParentStack(upIntent)  
+                        .startActivities();  
+            } else {  
+                upIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  
+                NavUtils.navigateUpTo(this, upIntent);  
+            }  
+            return true;  
+            ......  
+        }  
+    }  
+
+
+
+//可以点击按钮之后出现搜索栏
+ <item  
+        android:id="@+id/action_search"  
+        android:icon="@drawable/ic_action_search"  
+        android:actionViewClass="android.widget.SearchView"  
+        android:showAsAction="ifRoom|collapseActionView"  
+        android:title="@string/action_search" />  
+
+
+overflow按钮在有些手机上会显示，而在有些手机上偏偏就不显示，如果手机没有物理Menu键的话，overflow按钮就可以显示，如果有物理Menu键的话，overflow按钮就不会显示出来。
+解决办法：
+
+在ViewConfiguration这个类中有一个叫做sHasPermanentMenuKey的静态变量，可以通过反射的方式修改它的值，让它永远为false就可以了
+private void setOverflowShowingAlways() {  
+    try {  
+        ViewConfiguration config = ViewConfiguration.get(this);  
+        Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");  
+        menuKeyField.setAccessible(true);  
+        menuKeyField.setBoolean(config, false);  
+    } catch (Exception e) {  
+        e.printStackTrace();  
+    }  
+}  

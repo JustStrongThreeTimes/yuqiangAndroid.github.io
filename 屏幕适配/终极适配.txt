@@ -1,0 +1,34 @@
+1.
+
+dependencies {
+    compile project(':autolayout')
+}
+2.
+在你的项目的AndroidManifest中注明你的设计稿的尺寸。
+<meta-data android:name="design_width" android:value="768"></meta-data>
+<meta-data android:name="design_height" android:value="1280"></meta-data>
+3.Activity去继承AutoLayoutActivity
+
+
+
+
+
+注意
+1.对于TextView
+，可以使用本库通过编写margin_left,margin_top等很轻松的完成居中。但是为了精确起见，还是建议使用gravity，centerInXXX等属性完成。
+2 指定设置的值参考宽度或者高度
+由于该库的特点，布局文件中宽高上的1px是不相等的，于是如果需要宽高保持一致的情况，布局中使用属性：
+app:layout_auto_basewidth="height"，代表height上编写的像素值参考宽度。
+app:layout_auto_baseheight="width"，代表width上编写的像素值参考高度。
+如果需要指定多个值参考宽度即：
+
+app:layout_auto_basewidth="height|padding"
+
+3.将状态栏区域作为内容区域
+
+如果某个Activity需要将状态栏区域作为实际的内容区域时，那么可用高度会变大，你所要做的只有一件事：让这个Activity实现UseStatusBar接口(仅仅作为标识左右，不需要实现任何方法)，当然你肯定要自己开启windowTranslucentStatus或者设置FLAG_TRANSLUCENT_STATUS。
+
+注意：仅仅是改变状态栏颜色，并不需要实现此接口，因为并没有实际上增加可用高度。
+
+
+参考http://blog.csdn.net/lmj623565791/article/details/49990941

@@ -3,7 +3,7 @@ ListView
 将ListView中的Item布局中的子控件focusable属性设置为false
 设置item的根布局的属性android:descendantFocusability="blocksDescendant"
 
-2. list item 复用问题
+2. 
 2.1 比如checkbox 
 在bean 中 建立一个 boolean 类型的 ischecked 在适配器中
  final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.cb);

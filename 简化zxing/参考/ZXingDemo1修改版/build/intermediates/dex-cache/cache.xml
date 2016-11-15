@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="H:\ZXingDemo1\app\libs\core.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="327bddfe22740db0419bd719a0f950b6ad2b3c3f">
+        <dex dex="H:\ZXingDemo1\app\build\intermediates\pre-dexed\debug\core_04e356a3100803d3d1104c5836b178c259b5647a.jar" />
+    </item>
+    <item
+        jar="H:\ZXingDemo1\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="32a128d4c138312729f10fc58a39f3be3bdc71b0">
+        <dex dex="H:\ZXingDemo1\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_1d04554e1e84e30ed48ada341e37ac539c406c78.jar" />
+    </item>
+    <item
+        jar="H:\ZXingDemo1\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="d940d06ca9b06755d34bb9c4d0538f594821ed07">
+        <dex dex="H:\ZXingDemo1\app\build\intermediates\pre-dexed\debug\instant-run_adfe44333d13123a3d37e901725f9f120772944a.jar" />
+    </item>
+
+</items>
